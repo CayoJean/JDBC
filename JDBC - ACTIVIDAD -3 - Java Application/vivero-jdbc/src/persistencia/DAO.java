@@ -17,17 +17,29 @@ public abstract class DAO {
     private final String DATABASE = "vivero";
     private final String DRIVER = "com.mysql.cj.jdbc.Driver";
 
-    protected void conectarDataBase() throws SQLException, ClassNotFoundException {
+    protected Connection conectarDataBase() throws SQLException, ClassNotFoundException {
         try {
+            // Cargar el controlador JDBC
             Class.forName(DRIVER);
-            String url = "jdbc:mysql://" + HOST + ":" + PORT + "/" + DATABASE;
+        
+            // Modificar la URL para incluir la zona horaria
+            String url = "jdbc:mysql://" + HOST + ":" + PORT + "/" + DATABASE 
+                        + "?useSSL=false&serverTimezone=UTC"; // Puedes cambiar 'UTC' por tu zona horaria preferida
+        
+            // Establecer la conexión con la base de datos
             conexion = DriverManager.getConnection(url, USER, PASSWORD);
+            
+            // Mensaje de éxito en la conexión
             System.out.println("Conexión exitosa a la base de datos.");
+            return conexion; // Devuelve la conexión
         } catch (ClassNotFoundException | SQLException e) {
-            System.out.println(e.getMessage());
+            // Mostrar el error si ocurre y lanzar la excepción
+            System.out.println("Error en la conexión: " + e.getMessage());
             throw e;
         }
     }
+    
+    
 
     protected void desconectarDataBase() throws SQLException, ClassNotFoundException {
         try {

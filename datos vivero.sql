@@ -1,6 +1,9 @@
 -- CREACIÓN DE BASE DE DATOS VIVERO
 CREATE DATABASE vivero;
 
+ALTER TABLE clientes 
+MODIFY COLUMN id_cliente INT NOT NULL AUTO_INCREMENT;
+
 -- Creación de la tabla 'oficina'
 CREATE TABLE oficina (
     id_oficina INT PRIMARY KEY,

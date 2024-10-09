@@ -14,6 +14,8 @@ public class Cliente {
     private String codigoPostal;
     private int idEmpleado;
     private double limiteCredito;
+
+    // Constructor completo
     public Cliente(int idCliente, int codigoCliente, String nombreCliente, String nombreContacto,
             String apellidoContacto, String telefono, String fax, String ciudad, String region, String pais,
             String codigoPostal, int idEmpleado, double limiteCredito) {
@@ -31,6 +33,8 @@ public class Cliente {
         this.idEmpleado = idEmpleado;
         this.limiteCredito = limiteCredito;
     }
+
+    // Constructor sin idCliente
     public Cliente(int codigoCliente, String nombreCliente, String nombreContacto,
             String apellidoContacto, String telefono, String fax, String ciudad, String region, String pais,
             String codigoPostal, int idEmpleado, double limiteCredito) {
@@ -47,9 +51,11 @@ public class Cliente {
         this.idEmpleado = idEmpleado;
         this.limiteCredito = limiteCredito;
     }
-    public Cliente() {
-    }
-    
+
+    // Constructor vacío
+    public Cliente() {}
+
+    // Getters y setters
     public int getIdCliente() {
         return idCliente;
     }
@@ -65,96 +71,99 @@ public class Cliente {
     public void setCodigoCliente(int codigoCliente) {
         this.codigoCliente = codigoCliente;
     }
-    
+
     public String getNombreCliente() {
         return nombreCliente;
     }
-    
+
     public void setNombreCliente(String nombreCliente) {
         this.nombreCliente = nombreCliente;
     }
-    
+
     public String getNombreContacto() {
         return nombreContacto;
     }
-    
+
     public void setNombreContacto(String nombreContacto) {
         this.nombreContacto = nombreContacto;
     }
-    
+
     public String getApellidoContacto() {
         return apellidoContacto;
     }
-    
+
     public void setApellidoContacto(String apellidoContacto) {
         this.apellidoContacto = apellidoContacto;
     }
-    
+
     public String getTelefono() {
         return telefono;
     }
-    
+
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-    
+
     public String getFax() {
         return fax;
     }
-    
+
     public void setFax(String fax) {
         this.fax = fax;
     }
-    
+
     public String getCiudad() {
         return ciudad;
     }
-    
+
     public void setCiudad(String ciudad) {
         this.ciudad = ciudad;
     }
-    
+
     public String getRegion() {
         return region;
     }
-    
+
     public void setRegion(String region) {
         this.region = region;
     }
-    
+
     public String getPais() {
         return pais;
     }
-    
+
     public void setPais(String pais) {
         this.pais = pais;
     }
-    
+
     public String getCodigoPostal() {
         return codigoPostal;
     }
-    
+
     public void setCodigoPostal(String codigoPostal) {
         this.codigoPostal = codigoPostal;
     }
-    
+
     public int getIdEmpleado() {
         return idEmpleado;
     }
-    
+
     public void setIdEmpleado(int idEmpleado) {
         this.idEmpleado = idEmpleado;
     }
-    
+
     public double getLimiteCredito() {
         return limiteCredito;
     }
-    
+
     public void setLimiteCredito(double limiteCredito) {
         this.limiteCredito = limiteCredito;
     }
 
-
+    // Método para imprimir nombre y apellido
+    public String imprimirNyA() {
+        return "ID Cliente: " + idCliente + ", Nombre: " + nombreContacto + ", Apellido: " + apellidoContacto;
+    }
 
     @Override
     public String toString() {
@@ -163,7 +172,5 @@ public class Cliente {
                 + ", fax=" + fax + ", ciudad=" + ciudad + ", region=" + region + ", pais=" + pais + ", codigoPostal=" + codigoPostal
                 + ", idEmpleado=" + idEmpleado + ", limiteCredito=" + limiteCredito + "]";
     }
-
-
-
 }
+
