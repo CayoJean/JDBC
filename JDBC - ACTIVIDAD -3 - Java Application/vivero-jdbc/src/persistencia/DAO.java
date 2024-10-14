@@ -18,30 +18,14 @@ public abstract class DAO {
     private final String DRIVER = "com.mysql.cj.jdbc.Driver";
 
     protected Connection conectarDataBase() throws SQLException, ClassNotFoundException {
-        try {
-            // Cargar el controlador JDBC
-            Class.forName(DRIVER);
-        
-            // Modificar la URL para incluir la zona horaria
-            String url = "jdbc:mysql://" + HOST + ":" + PORT + "/" + DATABASE 
-                        + "?useSSL=false&serverTimezone=UTC"; // Puedes cambiar 'UTC' por tu zona horaria preferida
-        
-            // Establecer la conexión con la base de datos
-            conexion = DriverManager.getConnection(url, USER, PASSWORD);
-            
-            // Mensaje de éxito en la conexión
-            System.out.println("Conexión exitosa a la base de datos.");
-            return conexion; // Devuelve la conexión
-        } catch (ClassNotFoundException | SQLException e) {
-            // Mostrar el error si ocurre y lanzar la excepción
-            System.out.println("Error en la conexión: " + e.getMessage());
-            throw e;
-        }
+        String url = "jdbc:mysql://" + HOST + ":" + PORT + "/" + DATABASE + "?useSSL=false&serverTimezone=UTC";
+        Class.forName(DRIVER);
+        conexion = DriverManager.getConnection(url, USER, PASSWORD);
+        System.out.println("Conexión exitosa a la base de datos.");
+        return conexion;
     }
-    
-    
 
-    protected void desconectarDataBase() throws SQLException, ClassNotFoundException {
+    protected void desconectarDataBase() {
         try {
             if (resultSet != null) {
                 resultSet.close();
@@ -54,20 +38,16 @@ public abstract class DAO {
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-            throw e;
         }
     }
 
     protected void insertarModificarEliminarDataBase(String sql) throws Exception {
-        try {
-            conectarDataBase();
-            statement = conexion.createStatement();
-            statement.executeUpdate(sql);
+        try (Connection conn = conectarDataBase(); 
+             Statement stmt = conn.createStatement()) {
+            stmt.executeUpdate(sql);
         } catch (SQLException e) {
             System.out.println("Error al ejecutar la operación: " + e.getMessage());
             throw e;
-        } finally {
-            desconectarDataBase();
         }
     }
 
@@ -76,10 +56,11 @@ public abstract class DAO {
             conectarDataBase();
             statement = conexion.createStatement();
             resultSet = statement.executeQuery(sql);
+            return resultSet; // El resultado se devuelve para su uso
         } catch (SQLException e) {
             System.out.println("Error al realizar la consulta: " + e.getMessage());
             throw e;
         }
-        return resultSet;
     }
 }
+

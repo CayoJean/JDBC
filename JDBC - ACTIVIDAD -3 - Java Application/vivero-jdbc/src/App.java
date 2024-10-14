@@ -36,8 +36,8 @@ public class App {
 
 
 
-
 import persistencia.ClienteDAO;
+import servicios.ClienteServicio;
 
 
 public class App {
@@ -68,8 +68,32 @@ public class App {
             System.out.println("Buscando cliente con código: " + codigoClienteABuscar);
             clienteDAO.buscarClientePorCodigo(codigoClienteABuscar);
 
+
+
+            
+
+            // ✏️  Actividad Cliente Servicio
+
+            // 1. Crear una instancia de ClienteServicio
+            ClienteServicio clienteServicio = new ClienteServicio();
+
+            // 2. Intentar crear un nuevo cliente con datos válidos
+            System.out.println("Intentando crear cliente con datos válidos...");
+            clienteServicio.crearNuevoCliente(1003, "Jardinería La Primavera", "Ana", "Rodríguez",
+                    "654321987", "123123123", "Sevilla", "Andalucía", "España", "41001", 3, 1500.75);
+            System.out.println("Cliente creado correctamente.");
+
+            // 3. Intentar crear un cliente con datos inválidos (sin nombre de contacto)
+            System.out.println("Intentando crear cliente con nombre de contacto vacío...");
+            clienteServicio.crearNuevoCliente(1004, "Vivero del Sur", "", "García",
+                    "987654321", "123456789", "Madrid", "Madrid", "España", "28001", 4, 2200.00);
+            System.out.println("Este mensaje no debería mostrarse, ya que debería lanzarse una excepción.");
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
+        
     }
 }
+

@@ -5,9 +5,10 @@ public class DetallePedido {
     private int idPedido;
     private int idProducto;
     private int cantidad;
-    private double precioUnidad;
+    private double precioUnidad; // Atributo de precio
     private short numeroLinea;
 
+    // Constructor con todos los parámetros
     public DetallePedido(int idDetallePedido, int idPedido, int idProducto, int cantidad, double precioUnidad, short numeroLinea) {
         this.idDetallePedido = idDetallePedido;
         this.idPedido = idPedido;
@@ -16,15 +17,20 @@ public class DetallePedido {
         this.precioUnidad = precioUnidad;
         this.numeroLinea = numeroLinea;
     }
-    public DetallePedido( int idPedido, int idProducto, int cantidad, double precioUnidad, short numeroLinea) {
+
+    // Constructor sin idDetallePedido
+    public DetallePedido(int idPedido, int idProducto, int cantidad, double precioUnidad, short numeroLinea) {
         this.idPedido = idPedido;
         this.idProducto = idProducto;
         this.cantidad = cantidad;
         this.precioUnidad = precioUnidad;
         this.numeroLinea = numeroLinea;
     }
+
+    // Constructor vacío
     public DetallePedido() {}
 
+    // Métodos getters y setters
     public int getIdDetallePedido() {
         return idDetallePedido;
     }
