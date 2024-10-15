@@ -1,7 +1,7 @@
 DROP DATABASE IF EXISTS estancias_exterior;
 CREATE DATABASE IF NOT EXISTS estancias_exterior;
--- USE estancias_exterior;
 
+-- USE estancias_exterior
 CREATE TABLE clientes (
   id_cliente INT UNSIGNED AUTO_INCREMENT NOT NULL,
   nombre VARCHAR(50) NOT NULL,

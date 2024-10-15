@@ -1,4 +1,4 @@
-import persistencia.DAO;
+/*import persistencia.DAO;
 
 public class App {
     public static void main(String[] args) {
@@ -13,5 +13,16 @@ public class App {
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
+    }
+}
+*/
+
+
+
+public class App {
+
+    public static void main(String[] args) {
+        Menu menu = new Menu();
+        menu.mostrarMenu();  // Llamamos al menú desde la clase principal
     }
 }

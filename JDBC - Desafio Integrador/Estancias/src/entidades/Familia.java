@@ -8,20 +8,7 @@ public class Familia {
     private int numHijos;
     private String email;
 
-    // Constructor
-    public Familia() {
-    }
-
-    public Familia(int id, String nombre, int edadMinima, int edadMaxima, int numHijos, String email) {
-        this.id = id;
-        this.nombre = nombre;
-        this.edadMinima = edadMinima;
-        this.edadMaxima = edadMaxima;
-        this.numHijos = numHijos;
-        this.email = email;
-    }
-
-    // Getters y Setters
+    // Getters y setters
     public int getId() {
         return id;
     }
@@ -68,5 +55,13 @@ public class Familia {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    // Sobreescribir el método toString para imprimir la información de la familia
+    @Override
+    public String toString() {
+        return "Familia [ID: " + id + ", Nombre: " + nombre + ", Edad Mínima: " + edadMinima +
+                ", Edad Máxima: " + edadMaxima + ", Número de Hijos: " + numHijos +
+                ", Email: " + email + "]";
     }
 }
